@@ -13,8 +13,12 @@ const kFemaleText = 'FEMALE';
 const kHeightText = 'HEIGHT';
 const kWeightText = 'WEIGHT';
 const kAgeText = 'AGE';
+const kCalculateText = 'CALCULATE';
 
 const kMinHeight = 120.0;
 const kMaxHeight = 220.0;
 
-enum Gender { male, female }
+const kLargeButtonTextStyle = TextStyle(
+  fontSize: 25.0,
+  fontWeight: FontWeight.bold,
+);

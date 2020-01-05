@@ -4,6 +4,9 @@ import 'icon_content.dart';
 import 'reusable_card.dart';
 import 'constants.dart';
 import 'round_icon_button.dart';
+import 'result_page.dart';
+
+enum Gender { male, female }
 
 class InputPage extends StatefulWidget {
   @override
@@ -228,21 +231,27 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            color: kBottomContainerCardColor,
-            margin: EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: kBottomContainerHeight,
-            child: SafeArea(
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ResultPage(),
+                ),
+              );
+            },
+            child: Container(
+              color: kBottomContainerCardColor,
+              margin: EdgeInsets.only(top: 10.0),
+              width: double.infinity,
+              height: kBottomContainerHeight,
+              padding: EdgeInsets.only(bottom: 20.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    'START',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25.0,
-                    ),
+                    kCalculateText,
+                    style: kLargeButtonTextStyle,
                   )
                 ],
               ),
