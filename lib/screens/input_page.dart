@@ -1,10 +1,12 @@
+import 'package:bmi_calc/componsnts/bottom_button.dart';
+import 'package:bmi_calc/componsnts/icon_content.dart';
+import 'package:bmi_calc/componsnts/reusable_card.dart';
+import 'package:bmi_calc/componsnts/round_icon_button.dart';
+import 'package:bmi_calc/constants.dart';
+import 'package:bmi_calc/screens/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'icon_content.dart';
-import 'reusable_card.dart';
-import 'constants.dart';
-import 'round_icon_button.dart';
-import 'result_page.dart';
+import 'package:bmi_calc/calculator_brain.dart';
 
 enum Gender { male, female }
 
@@ -231,31 +233,22 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
+          BottomButton(
+            buttonTitle: kCalculateText,
             onTap: () {
+              CalculatorBrain calc =
+                  CalculatorBrain(height: height, weight: weight);
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ResultPage(),
+                  builder: (context) => ResultPage(
+                    bmiResult: calc.calculateBMI(),
+                    resultText: calc.getResult(),
+                  ),
                 ),
               );
             },
-            child: Container(
-              color: kBottomContainerCardColor,
-              margin: EdgeInsets.only(top: 10.0),
-              width: double.infinity,
-              height: kBottomContainerHeight,
-              padding: EdgeInsets.only(bottom: 20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    kCalculateText,
-                    style: kLargeButtonTextStyle,
-                  )
-                ],
-              ),
-            ),
           ),
         ],
       ),
